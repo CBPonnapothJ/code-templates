@@ -43,6 +43,11 @@ while running:
     if ship_rect.x > WIDTH-ship_width:
         ship_rect.x = WIDTH-ship_width
 
+    for bullet in bullets[:]:
+        bullet.y -= 10
+        if bullet.y < 0:
+            bullets.remove(bullet)
+
 
 
     screen.blit(bg_surface, (0,0))
