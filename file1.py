@@ -1,13 +1,19 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
-x = [1,2,3,4,5,6,7,8]
-y = [45,50,55,62,68,72,78,85]
+study = [1,2,3,4,5,6,7]
+score = [50,58,65,72,80,88,95]
 
-plt.plot(x,y, marker='o', label ="คะแนนสอบ")
+m, b = np.polyfit(study,score,1)
 
-plt.xlabel("ชั่วโมงอ่านหนังสือสอบ")
-plt.ylabel("คะแนนสอบ")
-plt.title("ความสัมพันธ์ระหว่างชั่วโมงอ่านหนังสือสอบกับคะแนนสอบ")
+predict = m*8 + b
 
-plt.legend()
+print("Predicted score is:",predict)
+plt.scatter(study,score)
+
+x = np.array([1,8])
+
+y = m*x + b
+
+plt.plot(x,y)
 plt.show()
