@@ -29,8 +29,8 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                bullet_position = ship_rect.centerx, ship_rect.centery, bullet_size, bullet_size
-                bullet = pygame.Rect(bullet_position)
+                bullet = pygame.Rect(ship_rect.centerx, ship_rect.centery, bullet_size, bullet_size)
+                bullets.append(bullet)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
