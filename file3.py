@@ -1,3 +1,1 @@
-pygame.mixer.music.load("background.wav")
-pygame.mixer.music.play(-1)
-pygame.mixer.music.stop()
+#test from เครื่องอาจารย์ยืน
