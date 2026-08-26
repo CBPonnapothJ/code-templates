@@ -28,6 +28,9 @@ meteors = []
 
 score = 0
 
+shooting_sound = pygame.mixer.Sound('shot-sound.wav')
+hit_sound = pygame.mixer.Sound('explosion-sound.wav')
+
 running = True
 while running:
     for event in pygame.event.get():
