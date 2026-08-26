@@ -86,7 +86,7 @@ while running:
     for meteor in meteors[:]:
         screen.blit(meteor_surface, meteor)
 
-    score_font = pygame.font.SysFont('none',36)
+    score_font = pygame.font.Font('RedHat.ttf',36)
     score_text = score_font.render("คะแนน: " + str(score), True, (255,255,255))
     screen.blit(score_text, (10, 10))
     pygame.display.flip()
