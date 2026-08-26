@@ -30,7 +30,7 @@ score = 0
 
 shooting_sound = pygame.mixer.Sound('shot-sound.wav')
 hit_sound = pygame.mixer.Sound('explosion-sound.wav')
-bgm_sound = pygame.mixer.music.load('BGM24.mp3')
+bgm_sound = pygame.mixer.music.load('BGM2.mp3')
 pygame.mixer.music.play(-1)
 
 running = True
@@ -85,6 +85,10 @@ while running:
         pygame.draw.rect(screen, (255,255,0), bullet)
     for meteor in meteors[:]:
         screen.blit(meteor_surface, meteor)
+
+    score_font = pygame.font.SysFont('none',36)
+    score_text = score_font.render("Score: " + str(score), True, (255,255,255))
+    screen.blit(score_text, (10, 10))
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
