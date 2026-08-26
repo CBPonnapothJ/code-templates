@@ -18,12 +18,19 @@ ship_y = HEIGHT
 ship_rect = ship_surface.get_rect(midbottom=(ship_x, ship_y))
 ship_speed = 20
 
+bullets = []
+bullet_size = 10
+
 
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bullet_position = ship_rect.centerx, ship_rect.centery, bullet_size, bullet_size
+                bullet = pygame.Rect(bullet_position)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
@@ -34,7 +41,7 @@ while running:
         ship_rect.x = 0
     if ship_rect.x > WIDTH-ship_width:
         ship_rect.x = WIDTH-ship_width
-        
+
 
 
     screen.blit(bg_surface, (0,0))
