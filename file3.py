@@ -22,7 +22,8 @@ bullets = []
 bullet_size = 10
 
 meteor_surface = pygame.image.load('meteor2.png').convert_alpha()
-meteor_surface = pygame.transform.scale(meteor_surface, (50, 50))
+meteor_surface = pygame.transform.scale(meteor_surface, (100, 100))
+
 
 
 running = True
