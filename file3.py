@@ -87,7 +87,7 @@ while running:
         screen.blit(meteor_surface, meteor)
 
     score_font = pygame.font.SysFont('none',36)
-    score_text = score_font.render("Score: " + str(score), True, (255,255,255))
+    score_text = score_font.render("คะแนน: " + str(score), True, (255,255,255))
     screen.blit(score_text, (10, 10))
     pygame.display.flip()
     clock.tick(60)
