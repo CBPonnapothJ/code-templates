@@ -22,8 +22,9 @@ bullets = []
 bullet_size = 10
 
 meteor_surface = pygame.image.load('meteor2.png').convert_alpha()
-meteor_surface = pygame.transform.scale(meteor_surface, (100, 100))
+meteor_surface = pygame.transform.scale(meteor_surface, (100, 100))\
 
+meteors = []
 
 
 running = True
@@ -36,6 +37,11 @@ while running:
                 bullet = pygame.Rect(ship_rect.centerx, ship_rect.centery, bullet_size, bullet_size)
                 bullets.append(bullet)
 
+    if random.randint(1,30) == 1:
+        x = random.randint(0, WIDTH-50)
+        y = -50
+        meteor_rect = meteor_surface.get_rect(midbottom=(x, y))
+        meteors.append(meteor_rect)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
@@ -52,14 +58,12 @@ while running:
         if bullet.y < 0:
             bullets.remove(bullet)
 
-    # เปิดดู code ได้ที่ cubic.camp/ct ดูที่ template 3
-
-
-
     screen.blit(bg_surface, (0,0))
     screen.blit(ship_surface, ship_rect)
     for bullet in bullets[:]:
         pygame.draw.rect(screen, (255,255,0), bullet)
+    for meteor in meteors[:]:
+        screen.blit(meteor_surface, meteor)
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
