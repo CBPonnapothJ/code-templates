@@ -26,6 +26,7 @@ meteor_surface = pygame.transform.scale(meteor_surface, (50, 50))
 
 meteors = []
 
+score = 0
 
 running = True
 while running:
@@ -62,6 +63,13 @@ while running:
         meteor.y += 4
         if meteor.y > HEIGHT:
             meteors.remove(meteor)
+
+        for bullet in bullets[:]:
+            if bullet.colliderect(meteor):
+                bullets.remove(bullet)
+                meteors.remove(meteor)
+                score += 1
+                break
 
 
     screen.blit(bg_surface, (0,0))
