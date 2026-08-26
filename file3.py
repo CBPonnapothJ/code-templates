@@ -47,6 +47,8 @@ while running:
 
     screen.blit(bg_surface, (0,0))
     screen.blit(ship_surface, ship_rect)
+    for bullet in bullets:
+        pygame.draw.rect(screen, (255,255,0), bullet)
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
