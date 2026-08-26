@@ -31,7 +31,7 @@ while running:
             if event.key == pygame.K_SPACE:
                 bullet = pygame.Rect(ship_rect.centerx, ship_rect.centery, bullet_size, bullet_size)
                 bullets.append(bullet)
-                #เปิดดู code ได้ที่ cubic.camp/ct ดูที่ template 3
+
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
@@ -47,6 +47,8 @@ while running:
         bullet.y -= 10
         if bullet.y < 0:
             bullets.remove(bullet)
+
+    # เปิดดู code ได้ที่ cubic.camp/ct ดูที่ template 3
 
 
 
