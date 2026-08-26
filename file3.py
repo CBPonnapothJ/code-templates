@@ -42,6 +42,7 @@ while running:
             if event.key == pygame.K_SPACE:
                 bullet = pygame.Rect(ship_rect.centerx, ship_rect.centery, bullet_size, bullet_size)
                 bullets.append(bullet)
+                shooting_sound.play()
 
     if random.randint(1,30) == 1:
         x = random.randint(0, WIDTH-50)
@@ -73,6 +74,7 @@ while running:
             if bullet.colliderect(meteor):
                 bullets.remove(bullet)
                 meteors.remove(meteor)
+                hit_sound.play()
                 score += 1
                 break
 
