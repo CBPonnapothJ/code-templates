@@ -30,6 +30,8 @@ score = 0
 
 shooting_sound = pygame.mixer.Sound('shot-sound.wav')
 hit_sound = pygame.mixer.Sound('explosion-sound.wav')
+bgm_sound = pygame.mixer.music.load('BGM2.mp3')
+pygame.mixer.music.play(-1)
 
 running = True
 while running:
