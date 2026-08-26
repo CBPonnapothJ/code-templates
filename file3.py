@@ -58,6 +58,12 @@ while running:
         if bullet.y < 0:
             bullets.remove(bullet)
 
+    for meteor in meteors[:]:
+        meteor.y += 4
+        if meteor.y > HEIGHT:
+            meteors.remove(meteor)
+            
+
     screen.blit(bg_surface, (0,0))
     screen.blit(ship_surface, ship_rect)
     for bullet in bullets[:]:
