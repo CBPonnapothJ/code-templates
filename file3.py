@@ -22,7 +22,7 @@ bullets = []
 bullet_size = 10
 
 meteor_surface = pygame.image.load('meteor2.png').convert_alpha()
-meteor_surface = pygame.transform.scale(meteor_surface, (100, 100))\
+meteor_surface = pygame.transform.scale(meteor_surface, (50, 50))
 
 meteors = []
 
@@ -62,7 +62,7 @@ while running:
         meteor.y += 4
         if meteor.y > HEIGHT:
             meteors.remove(meteor)
-            
+
 
     screen.blit(bg_surface, (0,0))
     screen.blit(ship_surface, ship_rect)
