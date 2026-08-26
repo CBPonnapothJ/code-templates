@@ -1,0 +1,7 @@
+*
+!.gitignore
+!README.md
+!autopush.sh
+!file1.py
+!file2.py
+!file3.py
