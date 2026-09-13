@@ -4,11 +4,11 @@ pygame.init()
 
 WIDTH, HEIGHT = 800 , 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Space shooter")
+pygame.display.set_caption("Space shooting game")
 clock = pygame.time.Clock()
 
-bg_surface = pygame.image.load("background.jpg").convert_alpha()
-bg_surface = pygame.transform.scale(bg_surface, (WIDTH, HEIGHT))
+bg = pygame.image.load("background.jpg").convert_alpha()
+bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 
 running = True
 while running:
@@ -16,7 +16,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    screen.blit(bg_surface, (0,0))
+    screen.blit(bg, (0,0))
 
     pygame.display.flip()
     clock.tick(60)
