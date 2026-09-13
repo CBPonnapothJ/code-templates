@@ -52,6 +52,11 @@ while running:
     if rocket_rect.x > WIDTH-80:
         rocket_rect.x = WIDTH-80
 
+    for bullet in bullets:
+        bullet.y -= 10
+        if bullet.y < 0:
+            bullets.remove(bullet)
+
     screen.blit(bg, (0,0))
     screen.blit(rocket_image, rocket_rect)
     for meteor in meteor_positions:
