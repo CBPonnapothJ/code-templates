@@ -23,9 +23,9 @@ while running:
     screen.fill((0,0,0))
     for star in stars:
         pygame.draw.circle(screen, (255,255,255), (star[0], star[1]), 10)
-        star[1] += 2
+        star = (star[0],star[1] + 2)
         if  star[1] > HEIGHT:
-            star[1] = -20
+            star  = (random.randint(0,WIDTH), -20)
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
