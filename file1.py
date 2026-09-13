@@ -32,6 +32,7 @@ explore_sound = pygame.mixer.Sound("explosion-sound.wav")
 bullets = []
 font = pygame.font.Font(None, 48)
 game_over = True
+score = 0
 
 running = True
 while running:
@@ -68,6 +69,7 @@ while running:
                 bullets.remove(bullet)
                 meteor[1].x = random.randint(0, WIDTH - 50)
                 meteor[1].y = random.randint(-300, -50)
+                score += 1
 
 
     screen.blit(bg, (0,0))
@@ -76,8 +78,8 @@ while running:
         screen.blit(meteor_images[meteor[0]], meteor[1])
     for bullet in bullets:
         pygame.draw.rect(screen, (0, 255, 0), bullet)
-
-
+    score_text = font.render("Score: " + str(score), True, (255, 255, 255))
+    screen.blit(score_text, (10, 10))
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
