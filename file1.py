@@ -14,10 +14,10 @@ fruit_color = (255, 0, 0)
 
 basket_width = 100
 basket_height = 50
-basket_x = WIDTH//2-basket_width//2
-basket_y = HEIGHT-basket_height
+basket_starter_x = WIDTH//2-basket_width//2
+basket_starter_y = HEIGHT-basket_height
 basket_color = (0, 255, 255)
-basket = pygame.Rect(basket_x,basket_y, basket_width, basket_height)
+basket = pygame.Rect(basket_starter_x,basket_starter_y, basket_width, basket_height)
 
 
 running = True
