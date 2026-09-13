@@ -36,11 +36,13 @@ while running:
         basket.x = 0
     if basket.x > WIDTH-basket_width:
         basket.x = WIDTH-basket_width
-        
+
     fruit_y += fruit_speed
     if fruit_y > HEIGHT:
         fruit_y = random.randint(-300,-20)
         fruit_x = random.randint(0, WIDTH - fruit_radius)
+
+    fruit_rect = pygame.Rect
 
     screen.fill((255,255,255))
     pygame.draw.circle(screen,fruit_color,(fruit_x,fruit_y), fruit_radius)
