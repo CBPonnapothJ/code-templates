@@ -42,7 +42,7 @@ while running:
         fruit_y = random.randint(-300,-20)
         fruit_x = random.randint(0, WIDTH - fruit_radius)
 
-    fruit_rect = pygame.Rect
+    fruit_rect = pygame.Rect(fruit_x-fruit_radius,fruit_y-fruit_radius,fruit_radius*2,fruit_radius*2)
 
     screen.fill((255,255,255))
     pygame.draw.circle(screen,fruit_color,(fruit_x,fruit_y), fruit_radius)
