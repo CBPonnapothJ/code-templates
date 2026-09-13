@@ -43,6 +43,10 @@ while running:
         rocket_rect.x -= 10
     if keys[pygame.K_RIGHT]:
         rocket_rect.x += 10
+    if rocket_rect.x < 0:
+        rocket_rect.x = 0
+    if rocket_rect.x > WIDTH-80:
+        rocket_rect.x = WIDTH-80
 
     screen.blit(bg, (0,0))
     screen.blit(rocket_image, rocket_rect)
