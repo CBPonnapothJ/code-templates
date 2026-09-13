@@ -37,6 +37,10 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bullet_rect = pygame.Rect(rocket_rect.centerx, rocket_rect.centery, 5, 10)
+                bullets.append(bullet_rect)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
@@ -52,6 +56,8 @@ while running:
     screen.blit(rocket_image, rocket_rect)
     for meteor in meteor_positions:
         screen.blit(meteor_images[meteor[0]], meteor[1])
+    for bullet in bullets:
+        pygame.draw.rect(screen, (0, 255, 0), bullet)
 
 
     pygame.display.flip()
