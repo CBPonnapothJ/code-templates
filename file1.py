@@ -37,7 +37,7 @@ while running:
     screen.blit(bg, (0,0))
     screen.blit(rocket_image, rocket_rect)
     for meteor in meteor_positions:
-        screen.blit(meteor_images[meteor[0]], 50)
+        screen.blit(meteor_images[meteor[0]], meteor[1])
 
 
     pygame.display.flip()
