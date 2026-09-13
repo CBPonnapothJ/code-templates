@@ -1,73 +1,65 @@
 import pygame
 import random
+
 pygame.init()
 
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Fruits Catcher")
+pygame.display.set_caption("Space shooting game")
+
 clock = pygame.time.Clock()
 
-bg_surface = pygame.image.load('BG.png')
-bg_surface = pygame.transform.scale(bg_surface, (WIDTH, HEIGHT))
+bg = pygame.image.load("background (1).jpg")
+bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 
-basket_width = 150
-basket_height = 50
-basket_surface =pygame.image.load('basket3.png').convert_alpha()
-basket_surface = pygame.transform.scale(basket_surface, (basket_width,basket_height))
-basket_speed = 20
-basket_x = WIDTH//2
-basket_y = HEIGHT
-basket_rect = basket_surface.get_rect(midbottom= (basket_x,basket_y))
+rocket_image = pygame.image.load("ship3 (3).png").convert_alpha()
+rocket_image = pygame.transform.scale(rocket_image, (60, 40))
+rocket_rect = rocket_image.get_rect(center=(WIDTH // 2, HEIGHT - 20))
 
-fruit1_surface = pygame.image.load('fruit1.png').convert_alpha()
-fruit1_surface = pygame.transform.scale(fruit1_surface, (50, 50))
+meteor_image = pygame.image.load("meteor4 (2).png").convert_alpha()
+meteor_image = pygame.transform.scale(meteor_image, (40, 40))
 
-fruits = []
-spawn_timer = 0
+shooting_sound = pygame.mixer.Sound("shot-sound (3).wav")
+hit_sound = pygame.mixer.Sound("explosion-sound (3).wav")
+
+bullets = []
+meteors = []
 
 score = 0
+font = pygame.font.Font(None, 48)
+game_over = False
 
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bullet = pygame.Rect(rocket_rect.centerx, rocket_rect.centery, 10, 20)
+                bullets.append(bullet)
+
+    if not game_over and random.randint(1, 30) == 1:
+        x = random.randint(0, WIDTH - 20)
+        meteor_rect = meteor_image.get_rect(topleft=(x, -50))
+        meteors.append(meteor_rect)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
-        basket_rect.x -= basket_speed
+        rocket_rect.centerx -= 7
     if keys[pygame.K_RIGHT]:
-        basket_rect.x += basket_speed
+        rocket_rect.centerx += 7
+    if rocket_rect.left < 0:
+        rocket_rect.left = 0
+    if rocket_rect.right > WIDTH:
+        rocket_rect.right = WIDTH
 
-    if basket_rect.x < 0:
-        basket_rect.x = 0
-    if basket_rect.x > WIDTH-basket_width:
-        basket_rect.x = WIDTH-basket_width
+    screen.blit(bg, (0, 0))
+    screen.blit(rocket_image, rocket_rect)
 
-    if spawn_timer <= 0:
-        spawn_timer = random.randint(20, 100)
-    spawn_timer -= 1
-    if spawn_timer <= 0:
-        x = random.randint(0, WIDTH-50)
-        y = -50
-        fruit_rect = fruit1_surface.get_rect(topleft = (x,y))
-        fruits.append(fruit_rect)
-
-    for fruit in fruits[:]:
-        fruit.y += 5
-        if fruit.top > HEIGHT:
-            fruits.remove(fruit)
-        if basket_rect.colliderect(fruit):
-            fruits.remove(fruit)
-            score += 1
-
-    screen.blit(bg_surface, (0,0))
-    screen.blit(basket_surface, basket_rect)
-    for fruit in fruits[:]:
-        screen.blit(fruit1_surface, fruit)
-    score_font = pygame.font.SysFont('Arial', 36)
-    score_text = score_font.render("score:"+ str(score), True, (255,0,0))
-    screen.blit(score_text, (20,20))
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
+
+
+
