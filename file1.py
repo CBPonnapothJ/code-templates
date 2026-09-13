@@ -57,6 +57,9 @@ while running:
         if bullet.y < 0:
             bullets.remove(bullet)
 
+    for meteor in meteor_positions:
+        meteor[1].y += 10
+
     screen.blit(bg, (0,0))
     screen.blit(rocket_image, rocket_rect)
     for meteor in meteor_positions:
