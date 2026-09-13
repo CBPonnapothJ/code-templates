@@ -38,6 +38,12 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        rocket_rect.x -= 10
+    if keys[pygame.K_RIGHT]:
+        rocket_rect.x += 10
+
     screen.blit(bg, (0,0))
     screen.blit(rocket_image, rocket_rect)
     for meteor in meteor_positions:
