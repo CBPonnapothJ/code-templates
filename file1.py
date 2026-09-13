@@ -11,7 +11,7 @@ stars = []
 for i in range(100):
     x = random.randint(0,WIDTH)
     y = random.randint(0,HEIGHT)
-    stars.append((x,y))
+    stars.append([x,y])
 
 running = True
 while running:
@@ -20,13 +20,12 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    for star in stars:
-        print("x:",star[0])
-        print("y:",star[1])
-
     screen.fill((0,0,0))
     for star in stars:
         pygame.draw.circle(screen, (255,255,255), (star[0], star[1]), 10)
+        star[1] += 2
+        if  star[1] > HEIGHT:
+            star[1] = 0
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
