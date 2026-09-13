@@ -87,7 +87,8 @@ while running:
     screen.blit(score_text, (20,20))
 
     if game_over:
-        
+        game_over_text = font.render("GAME OVER", True, (255, 255, 255))
+        screen.blit(game_over_text, (300,400))
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
