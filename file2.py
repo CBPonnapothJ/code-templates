@@ -82,6 +82,12 @@ while running:
         screen.blit(meteor_image, meteor)
     for bullet in bullets[:]:
         pygame.draw.rect(screen,(255,255,0), bullet)
+
+    score_text = font.render("score:"+str(score), True, (255, 255, 255))
+    screen.blit(score_text, (20,20))
+
+    if game_over:
+        
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
