@@ -22,8 +22,9 @@ meteor_positions = []
 total_meteors = 10
 for i in range(total_meteors):
     x = random.randint(0,2)
-    meteor_rect = meteor_images[x].get_rect(topleft = (random.randint(0,WIDTH-50), -50))
-    meteor_positions.append([x,meteor_rect])
+    meteor_rect = meteor_images[x].get_rect(topleft = (random.randint(0,WIDTH-50), random.randint(-300,-50)))
+    speed = random.randint(3,10)
+    meteor_positions.append([x,meteor_rect,speed])
 
 shooting_sound = pygame.mixer.Sound("shot-sound.wav")
 explore_sound = pygame.mixer.Sound("explosion-sound.wav")
@@ -58,7 +59,7 @@ while running:
             bullets.remove(bullet)
 
     for meteor in meteor_positions:
-        meteor[1].y += 10
+        meteor[1].y += meteor[2]
 
     screen.blit(bg, (0,0))
     screen.blit(rocket_image, rocket_rect)
