@@ -26,6 +26,17 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        basket.x -= 5
+    if keys[pygame.K_RIGHT]:
+        basket.x += 5
+    if basket.x < 0:
+        basket.x = 0
+    if basket.x > WIDTH-basket_width:
+        basket.x = WIDTH-basket_width
+        
     fruit_y += fruit_speed
     if fruit_y > HEIGHT:
         fruit_y = random.randint(-300,-20)
