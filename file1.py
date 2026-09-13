@@ -60,6 +60,9 @@ while running:
 
     for meteor in meteor_positions:
         meteor[1].y += meteor[2]
+        if meteor[1].y > HEIGHT:
+            meteor[1].y = random.randint(-300,-50)
+
 
     screen.blit(bg, (0,0))
     screen.blit(rocket_image, rocket_rect)
