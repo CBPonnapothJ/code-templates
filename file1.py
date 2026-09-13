@@ -34,5 +34,6 @@ while running:
     screen.fill((255,255,255))
     pygame.draw.circle(screen,fruit_color,(fruit_x,fruit_y), fruit_radius)
     pygame.draw.rect(screen,basket_color,basket)
-
+    pygame.display.flip()
+    clock.tick(60)
 pygame.quit()
