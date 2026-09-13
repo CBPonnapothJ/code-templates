@@ -21,7 +21,8 @@ while running:
             running = False
 
     for star in stars:
-        star = (star[0], star[1]+2)
+        print(star[0])
+        print(star[1])
 
     screen.fill((0,0,0))
     for star in stars:
