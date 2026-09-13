@@ -22,7 +22,7 @@ meteor_image = pygame.transform.scale(meteor_image, (40, 40))
 shooting_sound = pygame.mixer.Sound("shot-sound.wav")
 hit_sound = pygame.mixer.Sound("explosion-sound.wav")
 bgm_sound = pygame.mixer.music.load("BGM2.mp3")
-bgm_sound.
+pygame.mixer.music.play(-1)
 
 bullets = []
 meteors = []
