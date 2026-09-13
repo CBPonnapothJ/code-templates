@@ -61,7 +61,13 @@ while running:
     for meteor in meteor_positions:
         meteor[1].y += meteor[2]
         if meteor[1].y > HEIGHT:
+            meteor[1].x = random.randint(0,WIDTH-50)
             meteor[1].y = random.randint(-300,-50)
+        for bullet in bullets:
+            if meteor[1].colliderect(bullet):
+                bullets.remove(bullet)
+                meteor[1].x = random.randint(0, WIDTH - 50)
+                meteor[1].y = random.randint(-300, -50)
 
 
     screen.blit(bg, (0,0))
