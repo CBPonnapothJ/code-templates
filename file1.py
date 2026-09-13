@@ -5,21 +5,13 @@ pygame.init()
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
-score = 0
 
-fruit_radius = 50
-fruit_x = random.randint(0, WIDTH - fruit_radius)
-fruit_y = -15
-fruit_speed = 5
-fruit_color = (255, 0, 0)
+stars = []
 
-basket_width = 100
-basket_height = 50
-basket_starter_x = WIDTH//2-basket_width//2
-basket_starter_y = HEIGHT-basket_height
-basket_color = (0, 255, 255)
-basket = pygame.Rect(basket_starter_x,basket_starter_y, basket_width, basket_height)
-
+for i in range(100):
+    x = random.randint(0,WIDTH)
+    y = random.randint(0,HEIGHT)
+    stars.append((x,y))
 
 running = True
 while running:
@@ -28,31 +20,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT]:
-        basket.x -= 5
-    if keys[pygame.K_RIGHT]:
-        basket.x += 5
-    if basket.x < 0:
-        basket.x = 0
-    if basket.x > WIDTH-basket_width:
-        basket.x = WIDTH-basket_width
+    screen.fill((0,0,0))
+    for star in stars:
+        pygame.draw.circle(screen, (255,255,255), (star[0], star[1]), 10)
 
-    fruit_y += fruit_speed
-    if fruit_y > HEIGHT:
-        fruit_y = random.randint(-300,-20)
-        fruit_x = random.randint(0, WIDTH - fruit_radius)
-
-    fruit_rect = pygame.Rect(fruit_x-fruit_radius,fruit_y-fruit_radius,fruit_radius*2,fruit_radius*2)
-    if fruit_rect.colliderect(basket):
-        score += 1
-        fruit_y = random.randint(-300, -20)
-        fruit_x = random.randint(0, WIDTH - fruit_radius)
-        print(score)
-
-    screen.fill((255,255,255))
-    pygame.draw.circle(screen,fruit_color,(fruit_x,fruit_y), fruit_radius)
-    pygame.draw.rect(screen,basket_color,basket)
     pygame.display.flip()
     clock.tick(60)
 pygame.quit()
