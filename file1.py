@@ -5,6 +5,7 @@ pygame.init()
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
+score = 0
 
 fruit_radius = 50
 fruit_x = random.randint(0, WIDTH - fruit_radius)
@@ -43,6 +44,11 @@ while running:
         fruit_x = random.randint(0, WIDTH - fruit_radius)
 
     fruit_rect = pygame.Rect(fruit_x-fruit_radius,fruit_y-fruit_radius,fruit_radius*2,fruit_radius*2)
+    if fruit_rect.colliderect(basket):
+        score += 1
+        fruit_y = random.randint(-300, -20)
+        fruit_x = random.randint(0, WIDTH - fruit_radius)
+        print(score)
 
     screen.fill((255,255,255))
     pygame.draw.circle(screen,fruit_color,(fruit_x,fruit_y), fruit_radius)
