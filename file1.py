@@ -22,7 +22,7 @@ meteor_positions = []
 total_meteors = 10
 for i in range(total_meteors):
     x = random.randint(0,2)
-    meteor_rect = meteor_images[x].get_rect(topleft = (random.randint(0,WIDTH-50), -50))
+    meteor_rect = meteor_images[x].get_rect(topleft = (random.randint(0,WIDTH-50), 50))
     meteor_positions.append([x,meteor_rect])
 
 shooting_sound = pygame.mixer.Sound("shot-sound.wav")
