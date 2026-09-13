@@ -10,9 +10,23 @@ clock = pygame.time.Clock()
 bg = pygame.image.load("background.jpg")
 bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 
-rocket = pygame.image.load("ship3.png").convert_alpha()
-rocket = pygame.transform.scale(rocket, (80, 60))
-rocket_rect = rocket.get_rect(center=(WIDTH//2-40, HEIGHT - 20))
+rocket_image = pygame.image.load("ship3.png").convert_alpha()
+rocket_image = pygame.transform.scale(rocket_image, (80, 60))
+rocket_rect = rocket_image.get_rect(center=(WIDTH//2-40, HEIGHT - 20))
+
+meteor_images = [pygame.image.load("meteor2.png").convert_alpha(),
+                 pygame.image.load("meteor3.png").convert_alpha(),
+                 pygame.image.load("meteor4.png").convert_alpha()
+                 ]
+meteor_positions = []
+total_meteors = 10
+for i in range(total_meteors):
+    x = random.randint(1,3)
+    meteor_rect = meteor_images[x].get_rect(topleft = (random.randint(0,WIDTH-50), -50))
+    meteor_positions.append([x,meteor_rect])
+
+shooting_sound = pygame.mixer.Sound("shot-sound.wav")
+explore_sound = pygame.mixer.Sound("explosion-sound.wav")
 
 running = True
 while running:
@@ -21,6 +35,10 @@ while running:
             running = False
 
     screen.blit(bg, (0,0))
+    screen.blit(rocket_image, rocket_rect)
+    for meteor in meteor_positions:
+        screen.blit(meteor_images[meteor[0]], meteor[1])
+
 
     pygame.display.flip()
     clock.tick(60)
