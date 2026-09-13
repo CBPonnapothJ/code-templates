@@ -9,18 +9,18 @@ pygame.display.set_caption("Space shooting game")
 
 clock = pygame.time.Clock()
 
-bg = pygame.image.load("background (1).jpg")
+bg = pygame.image.load("background.jpg")
 bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 
-rocket_image = pygame.image.load("ship3 (3).png").convert_alpha()
+rocket_image = pygame.image.load("ship3.png").convert_alpha()
 rocket_image = pygame.transform.scale(rocket_image, (60, 40))
 rocket_rect = rocket_image.get_rect(center=(WIDTH // 2, HEIGHT - 20))
 
-meteor_image = pygame.image.load("meteor4 (2).png").convert_alpha()
+meteor_image = pygame.image.load("meteor4.png").convert_alpha()
 meteor_image = pygame.transform.scale(meteor_image, (40, 40))
 
-shooting_sound = pygame.mixer.Sound("shot-sound (3).wav")
-hit_sound = pygame.mixer.Sound("explosion-sound (3).wav")
+shooting_sound = pygame.mixer.Sound("shot-sound.wav")
+hit_sound = pygame.mixer.Sound("explosion-sound.wav")
 
 bullets = []
 meteors = []
